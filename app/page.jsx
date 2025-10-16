@@ -1,4 +1,4 @@
-import LikeButton from "./like-button";
+import LikeButton from "./like-button.jsx";
 
 function Header({ title }) {
   return <div>{title ? title : "Default title"}</div>;

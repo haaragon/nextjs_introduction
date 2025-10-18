@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import LikeButton from "./like-button.jsx";
+import LikeButton from "@/like-button.jsx";
 
 // Minimal contract
 // - Renders "Likes (0)" initially

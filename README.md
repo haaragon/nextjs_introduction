@@ -1,6 +1,6 @@
 # nextjs_introduction
 
-Small playground with Next.js (App Router) and unit tests using Vitest + Testing Library.
+Small playground with Next.js (App Router) and unit tests using Jest + Testing Library.
 
 ## Requirements
 
@@ -21,12 +21,12 @@ npm install
 npm run dev
 ```
 
-- Unit tests (Vitest)
+- Unit tests (Jest)
 
 ```bash
-npm run test        # UI/Watch (Vitest)
-npm run test:watch  # Watch mode in terminal
-npm run test:run    # Single run (CI)
+npm run test        # Watch mode
+npm run test:watch  # Watch mode explicitly
+npm run test:run    # CI mode
 ```
 
 ## Structure
@@ -39,9 +39,10 @@ app/
 	like-button.test.jsx # Component unit tests
 test/
 	setup.js             # jest-dom matchers for Testing Library
-vitest.config.mjs      # Vitest config (jsdom, setup, automatic JSX)
+jest.config.js         # Jest config (jsdom, setup, Next integration)
 ```
 
 Notes:
 
 - Components with state/effects use "use client".
+- `@testing-library/jest-dom` extends Jest matchers for better DOM assertions.

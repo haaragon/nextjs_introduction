@@ -14,10 +14,11 @@ describe("RootLayout", () => {
       : element?.props?.children;
     expect(bodyEl?.type).toBe("body");
 
-    // ...that wraps our provided child
-    const childEl = Array.isArray(bodyEl?.props?.children)
-      ? bodyEl?.props?.children[0]
-      : bodyEl?.props?.children;
+    // ...that renders a NavBar followed by our provided child
+    const bodyChildren = bodyEl?.props?.children;
+    expect(Array.isArray(bodyChildren)).toBe(true);
+    const [navEl, childEl] = bodyChildren;
+    expect(navEl?.type?.name).toBe("NavBar");
     expect(childEl?.type).toBe("div");
     expect(childEl?.props?.children).toMatch(/hello from layout/i);
   });

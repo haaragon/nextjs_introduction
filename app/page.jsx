@@ -9,14 +9,6 @@ export default function HomePage() {
 
   return (
     <>
-      <Header title="React" />
-      <Header title="A new title" />
-      <ul>
-        {names.map((name) => (
-          <li key={name}>{name}</li>
-        ))}
-      </ul>
-      <LikeButton />
     </>
   );
 }

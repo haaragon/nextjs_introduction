@@ -4,7 +4,7 @@ Small playground with Next.js (App Router) and unit tests using Jest + Testing L
 
 ## Requirements
 
-- Node.js 18+ (20 recommended)
+- Node.js 20+ (20.19 recommended)
 - npm
 
 ## Install

@@ -29,6 +29,40 @@ npm run test:watch  # Watch mode explicitly
 npm run test:run    # CI mode
 ```
 
+## Database (PostgreSQL via Docker, local only)
+
+This project uses a local PostgreSQL instance run through Docker Desktop, for local development/testing only.
+
+1. Copy the example env file and adjust values if needed:
+
+```bash
+cp .env.example .env
+```
+
+2. Start the database container:
+
+```bash
+docker compose up -d
+```
+
+3. Stop the container (data is preserved in a Docker volume):
+
+```bash
+docker compose down
+```
+
+4. Stop the container and delete the data volume (full reset):
+
+```bash
+docker compose down -v
+```
+
+The connection string is read from `DATABASE_URL` in `.env`, e.g.:
+
+```
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/nextjs_introduction"
+```
+
 ## Structure
 
 ```

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import NavBar from "@/nav-bar.jsx";
-import { login } from "@/auth.js";
+import NavBar from "@/nav-bar";
+import { login } from "@/auth";
 
 jest.mock("next/navigation", () => ({
   useRouter: () => ({ push: jest.fn() }),

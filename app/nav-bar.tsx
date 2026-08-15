@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AUTH_EVENT, isLoggedIn, logout } from "@/auth.js";
+import { AUTH_EVENT, isLoggedIn, logout } from "@/auth";
 
 const links = [
   { href: "/", label: "Home" },

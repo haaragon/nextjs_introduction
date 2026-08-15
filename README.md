@@ -60,17 +60,15 @@ docker compose down -v
 The connection string is read from `DATABASE_URL` in `.env`, e.g.:
 
 ```
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/nextjs_introduction"
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/<database_name>"
 ```
 
 ## Structure
 
 ```
 app/
-	layout.jsx           # Root layout (App Router)
-	page.jsx             # Home page
-	like-button.jsx      # Example component ("use client")
-	like-button.test.jsx # Component unit tests
+	layout.tsx           # Root layout (App Router)
+	page.tsx             # Home page
 test/
 	setup.js             # jest-dom matchers for Testing Library
 jest.config.js         # Jest config (jsdom, setup, Next integration)

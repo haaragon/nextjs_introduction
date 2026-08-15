@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import LikeButton from "@/like-button.jsx";
-import { isLoggedIn } from "@/auth.js";
+import { isLoggedIn } from "@/auth";
 
-function Header({ title }) {
+function Header({ title }: { title?: string }) {
   return <div>{title ? title : "Default title"}</div>;
 }
 

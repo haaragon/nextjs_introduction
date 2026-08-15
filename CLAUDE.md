@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-A small learning/playground project for Next.js (App Router) with React 19, Tailwind CSS v4, and Jest + Testing Library for unit tests.
+A small learning/playground project for Next.js (App Router) with React 19, TypeScript, Tailwind CSS v4, and Jest + Testing Library for unit tests.
 
 ## Commands
 
@@ -15,29 +15,34 @@ npm run test         # run Jest tests (watch mode by default via jest.config.js)
 npm run test:watch   # explicit watch mode
 npm run test:run     # CI mode (jest --ci), non-interactive
 npm run test:coverage # run tests with coverage report
+npx tsc --noEmit -p tsconfig.json  # typecheck (no separate npm script defined)
 ```
 
 Run a single test file or pattern:
 
 ```bash
-npx jest app/like-button.test.jsx
+npx jest app/like-button.test.tsx
 npx jest -t "renders the title"
 ```
 
-There is no build/lint/typecheck script defined in package.json — don't assume one exists.
+There is no build/lint script defined in package.json — don't assume one exists. There is a `tsconfig.json`, so `npx tsc --noEmit` works for typechecking.
+
+Pin `typescript` to the 5.x line (currently `^5.9.3`) in devDependencies — Next.js 15.5.5 bundles/expects TypeScript 5.8.x internally, and TypeScript 7 (the native/Corsa compiler) breaks `next dev`'s built-in TS integration (`Cannot read properties of undefined (reading 'endsWith')`). Do not upgrade to TS 7 until Next.js supports it.
 
 ## Architecture
 
-- Next.js App Router lives entirely under `app/`. Each `page.jsx` in a subfolder (e.g. `app/about/page.jsx`, `app/products/page.jsx`) maps directly to a route.
-- `app/layout.jsx` is the root layout: it imports global Tailwind styles (`app/globals.css`) and renders `NavBar` above `{children}` on every page.
-- `app/nav-bar.jsx` defines the site navigation links in a single `links` array — add a route there to have it appear in the nav.
-- Client-side interactive components (state/effects) are marked `"use client"` at the top of the file, e.g. `app/like-button.jsx`. Server components (the default) have no such directive.
-- Path alias `@/*` resolves to `app/*` (configured in both `jsconfig.json` for the app and `jest.config.js`'s `moduleNameMapper` for tests) — import app modules as `@/nav-bar.jsx`, `@/globals.css`, etc., not via relative paths.
-- Styling uses Tailwind CSS v4 via the `@tailwindcss/postcss` PostCSS plugin (`postcss.config.mjs`); `app/globals.css` just contains `@import "tailwindcss";`.
+- Next.js App Router lives entirely under `app/`. Each `page.tsx` in a subfolder (e.g. `app/about/page.tsx`, `app/products/page.tsx`) maps directly to a route.
+- `app/layout.tsx` is the root layout: it imports global Tailwind styles (`app/globals.css`) and renders `NavBar` above `{children}` on every page.
+- `app/nav-bar.tsx` defines the site navigation links in a single `links` array — add a route there to have it appear in the nav.
+- Client-side interactive components (state/effects) are marked `"use client"` at the top of the file, e.g. `app/like-button.tsx`. Server components (the default) have no such directive.
+- Path alias `@/*` resolves to `app/*` (configured in both `tsconfig.json` for the app and `jest.config.js`'s `moduleNameMapper` for tests) — import app modules as `@/nav-bar`, `@/globals.css`, etc. (no `.ts`/`.tsx` extension), not via relative paths.
+- Styling uses Tailwind CSS v4 via the `@tailwindcss/postcss` PostCSS plugin (`postcss.config.mjs`); `app/globals.css` just contains `@import "tailwindcss";`. Plain CSS side-effect imports are declared ambiently in `app/css.d.ts` (`declare module "*.css"`) since TypeScript checks side-effect imports by default.
+- `next-env.d.ts` is auto-generated/overwritten by `next dev`/`next build` — don't hand-edit it or add declarations there; it's gitignored.
+- Test-only ambient types (e.g. `@testing-library/jest-dom` matcher augmentation) live in `test/jest-dom.d.ts`.
 
 ## Testing
 
-- Test files sit next to the component they cover, named `*.test.jsx` (e.g. `app/like-button.test.jsx`, `app/nav-bar.test.jsx`, `app/layout.test.jsx`, `app/page.test.jsx`).
+- Test files sit next to the component they cover, named `*.test.tsx` (e.g. `app/like-button.test.tsx`, `app/nav-bar.test.tsx`, `app/layout.test.tsx`, `app/page.test.tsx`).
 - Jest is configured through `next/jest` in `jest.config.js`, using `jest-environment-jsdom` and `@testing-library/react` / `@testing-library/jest-dom`.
 - `test/setup.js` is loaded via `setupFilesAfterEnv` and wires up `@testing-library/jest-dom` matchers — no need to re-import it per test file.
 - Coverage is collected from `app/**/*.{js,jsx,ts,tsx}`, excluding test files themselves.

@@ -1,0 +1,86 @@
+[
+  {
+    "productId": "P-001",
+    "name": "Fried Chicken Piece",
+    "description": "Single crispy fried chicken piece (leg, thigh, wing, or breast)",
+    "unit": "piece",
+    "numberOfItems": 250
+  },
+  {
+    "productId": "P-002",
+    "name": "2-Piece Combo",
+    "description": "2 pieces of fried chicken, fries, and a soda",
+    "unit": "combo",
+    "numberOfItems": 80
+  },
+  {
+    "productId": "P-003",
+    "name": "3-Piece Combo",
+    "description": "3 pieces of fried chicken, fries, coleslaw, and a soda",
+    "unit": "combo",
+    "numberOfItems": 60
+  },
+  {
+    "productId": "P-004",
+    "name": "Family Bucket",
+    "description": "12 pieces of fried chicken with 2 large sides",
+    "unit": "bucket",
+    "numberOfItems": 20
+  },
+  {
+    "productId": "P-005",
+    "name": "French Fries",
+    "description": "Crispy golden french fries, regular size",
+    "unit": "serving",
+    "numberOfItems": 150
+  },
+  {
+    "productId": "P-006",
+    "name": "Coleslaw Salad",
+    "description": "Fresh cabbage and carrot salad with creamy dressing",
+    "unit": "serving",
+    "numberOfItems": 100
+  },
+  {
+    "productId": "P-007",
+    "name": "Mashed Potatoes",
+    "description": "Mashed potatoes topped with gravy",
+    "unit": "serving",
+    "numberOfItems": 90
+  },
+  {
+    "productId": "P-008",
+    "name": "Chicken Sandwich",
+    "description": "Crispy chicken fillet sandwich with lettuce and mayo",
+    "unit": "piece",
+    "numberOfItems": 70
+  },
+  {
+    "productId": "P-009",
+    "name": "Soda",
+    "description": "Fountain soda, regular size (cola, lemon-lime, or orange)",
+    "unit": "cup",
+    "numberOfItems": 200
+  },
+  {
+    "productId": "P-010",
+    "name": "Iced Tea",
+    "description": "Sweetened iced tea, regular size",
+    "unit": "cup",
+    "numberOfItems": 120
+  },
+  {
+    "productId": "P-011",
+    "name": "Dinner Roll",
+    "description": "Soft buttered dinner roll",
+    "unit": "piece",
+    "numberOfItems": 180
+  },
+  {
+    "productId": "P-012",
+    "name": "Apple Pie",
+    "description": "Baked apple pie hand pie dessert",
+    "unit": "piece",
+    "numberOfItems": 50
+  }
+]

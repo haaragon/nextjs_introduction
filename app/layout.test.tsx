@@ -1,4 +1,4 @@
-import RootLayout, { metadata } from "@/layout.jsx";
+import RootLayout, { metadata } from "@/layout";
 
 describe("RootLayout", () => {
   it('returns an <html lang="en"> element with a <body> wrapping children', () => {

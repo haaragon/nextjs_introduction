@@ -9,3 +9,4 @@ coverage/
 .swc/
 next-env.d.ts
 *.tsbuildinfo
+app/generated/prisma
